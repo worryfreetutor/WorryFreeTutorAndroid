@@ -3,8 +3,6 @@ package com.example.kaixuan.worryfreetutor.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -23,8 +21,8 @@ public class MainActivity extends AppCompatActivity
         implements BottomNavigationBar.OnTabSelectedListener,ViewPager.OnPageChangeListener {
 
     private BottomNavigationBar bottomNavigationBar;
-    private FragmentManager fragmentManager;
-    private FragmentTransaction transaction;
+//    private FragmentManager fragmentManager;
+//    private FragmentTransaction transaction;
     private ViewPager viewPager;
     private int lastSelectedPosition =0;
     private List<Fragment> fragments;
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigationBar = findViewById(R.id.bottomnavigationbar);
         initView();
     }
 
@@ -44,7 +41,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initBottomNavigationBar() {
+        bottomNavigationBar = findViewById(R.id.bottom_navigation);
 
+        bottomNavigationBar.clearAll();
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
 
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity
                 .initialise();
 
         bottomNavigationBar.setTabSelectedListener(this);
+
 //        setDefaultFragement();
     }
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity
         fragments.add(new MessageFragment());
         fragments.add(new MeFragment());
 
-        viewPager.setAdapter(new MainViewPageAdapter(getSupportFragmentManager(),fragments));
+        viewPager.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(),fragments));
         viewPager.addOnPageChangeListener(this);
         viewPager.setCurrentItem(0);
     }
@@ -91,21 +91,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        bottomNavigationBar.selectTab(position);
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
 
     @Override
     public void onTabSelected(int position) {
@@ -122,4 +107,21 @@ public class MainActivity extends AppCompatActivity
     public void onTabReselected(int position) {
 
     }
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        bottomNavigationBar.selectTab(position);
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+
 }

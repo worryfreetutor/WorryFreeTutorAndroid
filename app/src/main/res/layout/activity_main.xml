@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".main.MainActivity">
+    <!--注意设置orientation，不然其默认值为horizontal,导致Viewpager无法触摸滑动（因为0dp无法触摸）-->
 
     <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
@@ -13,7 +15,7 @@
             android:layout_weight ="1"/>
 
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
-            android:id="@+id/bottomnavigationbar"
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity = "bottom"/>

@@ -3,6 +3,7 @@ package com.example.kaixuan.worryfreetutor.me;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import com.example.kaixuan.worryfreetutor.R;
 import com.example.kaixuan.worryfreetutor.base.BaseFragment;
 
 public class MeFragment extends BaseFragment {
-    private View mView;
+    private View mView = null;
     /**
      * 标志，记录View初始化是否完成。
      */
@@ -58,3 +59,14 @@ public class MeFragment extends BaseFragment {
         mHasLoadedOnce = true;
     }
 }
+//
+//public class MeFragment extends Fragment {
+//
+//
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        View rootView = inflater.inflate(R.layout.fragment_me, container, false);
+//        return rootView;
+//    }
+//}
