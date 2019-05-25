@@ -58,6 +58,7 @@ public class HomePagerFragment extends BaseFragment {
         mHasLoadedOnce = true;
     }
 }
+
 //public class HomePagerFragment extends Fragment {
 //
 //

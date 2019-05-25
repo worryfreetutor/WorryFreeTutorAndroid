@@ -1,5 +1,6 @@
 package com.example.kaixuan.worryfreetutor.main;
 
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -23,5 +24,10 @@ public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return fragments.size();
+    }
+
+    @Override
+    public Parcelable saveState(){
+        return null;
     }
 }
