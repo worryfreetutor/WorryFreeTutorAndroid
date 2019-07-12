@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.*;
 import android.view.LayoutInflater;
@@ -32,6 +33,8 @@ public class StudentFragment extends BaseFragment {
     private RecyclerView recyclerView;
 
     private SwipeRefreshLayout swipeRefreshLayout;
+
+    private FloatingActionButton floatingActionButton;
 
     @Nullable
     @Override
@@ -63,7 +66,7 @@ public class StudentFragment extends BaseFragment {
     private void initView() {
         swipeRefreshLayout = mView.findViewById(R.id.swipeRefreshLayout);
         recyclerView = (RecyclerView)mView.findViewById(R.id.recyclerView);
-
+        floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.student_FButton);
     }
 
     private ArrayList<String> arrayList = new ArrayList<>();
@@ -74,6 +77,14 @@ public class StudentFragment extends BaseFragment {
     }
     private void init() {
         getData();
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),StudentPostActivity.class);
+                startActivity(intent);
+            }
+        });
 
         final MyAdapter myAdapter = new MyAdapter(arrayList);
         myAdapter.setOnItemSelectedListener(new MyAdapter.OnItemSelectedListener() {

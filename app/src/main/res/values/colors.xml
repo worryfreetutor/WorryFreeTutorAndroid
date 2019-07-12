@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="colorDefault">#ffffff</color>
+    <color name="colorBackground">#f1f0f6</color>
+    <color name="colorText">#9b9b9b</color>
+
     <color name="pink">#ffc0cb</color><!--粉红色 -->
     <color name="lightpink">#ffb6c1</color><!--亮粉红色 -->
     <color name="white">#ffffff</color><!--白色 -->
@@ -91,9 +95,6 @@
     <color name="teal">#008080</color><!--水鸭色 -->
     <color name="green">#008000</color><!--绿色 -->
     <color name="darkgreen">#006400</color><!--暗绿色 -->
-    <color name="blue">#0000ff</color><!--蓝色 -->
-    <color name="mediumblue">#0000cd</color><!--中兰色 -->
-    <color name="darkblue">#00008b</color><!--暗蓝色 -->
     <color name="lightslategray">#778899</color><!--亮蓝灰 -->
     <color name="lightslategrey">#778899</color><!--亮蓝灰 -->
     <color name="slategray">#708090</color><!--灰石色 -->
@@ -110,26 +111,20 @@
     <color name="mediumturquoise">#48d1cc</color><!--中绿宝石 -->
     <color name="darkslateblue">#483d8b</color><!--暗灰蓝色 -->
     <color name="steelblue">#4682b4</color><!--钢兰色 -->
-    <color name="royalblue">#4169e1</color><!--皇家蓝 -->
     <color name="turquoise">#40e0d0</color><!--青绿色 -->
     <color name="mediumseagreen">#3cb371</color><!--中海蓝 -->
     <color name="limegreen">#32cd32</color><!--橙绿色 -->
-    <color name="midnightblue">#191970</color><!--中灰兰色 -->
     <color name="aqua">#00ffff</color><!--浅绿色 -->
     <color name="cyan">#00ffff</color><!--青色 -->
     <color name="springgreen">#00ff7f</color><!--春绿色 -->
     <color name="lime">#00ff00</color><!--酸橙色 -->
     <color name="mediumspringgreen">#00fa9a</color><!--中春绿色 -->
     <color name="darkturquoise">#00ced1</color><!--暗宝石绿 -->
-    <color name="deepskyblue">#00bfff</color><!--深天蓝色 -->
-    <color name="navy">#000080</color><!--海军色 -->
     <color name="black">#000000</color><!--黑色 -->
     <color name="darkslategray">#2f4f4f</color><!--暗瓦灰色 -->
     <color name="darkslategrey">#2f4f4f</color><!--暗瓦灰色 -->
     <color name="seagreen">#2e8b57</color><!--海绿色 -->
     <color name="forestgreen">#228b22</color><!--森林绿 -->
-    <color name="lightseagreen">#20b2aa</color><!--亮海蓝色 -->
-    <color name="dodgerblue">#1e90ff</color><!--闪兰色 -->
     <color name="honeydew">#f0fff0</color><!--蜜色 -->
     <color name="aliceblue">#f0f8ff</color><!--艾利斯兰 -->
     <color name="khaki">#f0e68c</color><!--黄褐色 -->
@@ -143,11 +138,23 @@
     <color name="darkmagenta">#8b008b</color><!--暗洋红 -->
     <color name="darkred">#8b0000</color><!--暗红色 -->
     <color name="blueviolet">#8a2be2</color><!--紫罗兰蓝色 -->
-    <color name="lightskyblue">#87cefa</color><!--亮天蓝色 -->
     <color name="lavender">#e6e6fa</color><!--淡紫色 -->
     <color name="lightcyan">#e0ffff</color><!--亮青色 -->
     <color name="burlywood">#deb887</color><!--实木色 -->
     <color name="crimson">#dc143c</color><!--暗深红色 -->
     <color name="plum">#dda0dd</color><!--洋李色 -->
     <color name="gainsboro">#dcdcdc</color><!--淡灰色 -->
+
+
+    <!--APP主色调蓝色系-->
+    <color name="lightskyblue">#87cefa</color><!--亮天蓝色 -->
+    <color name="dodgerblue">#1e90ff</color><!--闪兰色 -->
+    <color name="lightseagreen">#20b2aa</color><!--亮海蓝色 -->
+    <color name="deepskyblue">#00bfff</color><!--深天蓝色 -->
+    <color name="navy">#000080</color><!--海军色 -->
+    <color name="midnightblue">#191970</color><!--中灰兰色 -->
+    <color name="royalblue">#4169e1</color><!--皇家蓝 -->
+    <color name="blue">#0000ff</color><!--蓝色 -->
+    <color name="mediumblue">#0000cd</color><!--中兰色 -->
+    <color name="darkblue">#00008b</color><!--暗蓝色 -->
 </resources>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:context=".discover.StudentFragment"
->
+<android.support.design.widget.CoordinatorLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
@@ -13,11 +11,23 @@
             android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-      />
-
+                android:layout_height="match_parent"
+                android:id="@+id/recyclerView"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-</LinearLayout>
+    <com.example.kaixuan.worryfreetutor.base.MovableFloatingActionButton
+            android:id="@+id/student_FButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="140dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/floatingbutton_plus"
+            android:clickable="true"
+            android:backgroundTint="#ffffff"
+            app:fabSize="mini"
+            app:borderWidth="0dp"
+            app:layout_anchor="@id/recyclerView"
+            app:layout_anchorGravity="bottom|right"
+    />
+</android.support.design.widget.CoordinatorLayout>

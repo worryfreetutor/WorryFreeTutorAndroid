@@ -1,6 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+                                             android:layout_height="match_parent"
+                                             xmlns:toolbar="http://schemas.android.com/apk/res-auto"
+>
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+             android:layout_width="match_parent" android:layout_height="?actionBarSize"
+             android:background="@color/dodgerblue"
+             toolbar:navigationIcon="?homeAsUpIndicator"
+
+    />
+
+
+    <android.support.v4.widget.NestedScrollView
+            android:paddingTop="?actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    >
+        <LinearLayout
+                android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="24dp"
+                          android:orientation="horizontal"
+            >
+                <View   android:background="@color/mediumblue"  android:layout_marginLeft="5dp"
+                        android:layout_width="5dp" android:layout_height="match_parent"/>
+                <TextView
+                        android:gravity="center_horizontal"
+                        android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                        android:text="课程信息" android:textStyle="bold"    android:textColor="@color/black"
+                        android:layout_height="match_parent" android:layout_width="wrap_content"/>
+                <View   android:layout_marginRight="8dp"    android:alpha="0.5"
+                        android:background="@color/black" android:layout_width="match_parent"
+                        android:layout_height="1dp" android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@+id/teacher_course" android:text="课程:理综和数学"
+                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:paddingLeft="10dp"    android:paddingRight="10dp"/>
+        <TextView android:id="@+id/teacher_time" android:text="时间:
+
+
+      周一      周二      周三      周四      周五      周六      周日
+
+上午  √                  √                   √         √         √
+
+下午           √         √         √                  √          √
+
+晚上           √                                        √         √
+"
+                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:paddingLeft="10dp"  android:paddingRight="10dp"
+                  android:layout_marginTop="5dp" />
+        <TextView android:id="@+id/teacher_price" android:text="课时价格:100/课时"
+                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:paddingLeft="10dp"  android:paddingRight="10dp"
+                  android:layout_marginTop="5dp"/>
+
+            <TextView android:id="@+id/teacher_call" android:text="手机:178222229009790"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:paddingLeft="10dp"  android:paddingRight="10dp"
+            android:layout_marginTop="5dp"/>
+         </LinearLayout>
+
+
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="24dp"
+                              android:orientation="horizontal"
+                >
+                    <View   android:background="@color/mediumblue"  android:layout_marginLeft="5dp"
+                            android:layout_width="5dp" android:layout_height="match_parent"/>
+                    <TextView
+                            android:gravity="center_horizontal"
+                            android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                            android:text="个人推荐" android:textStyle="bold"    android:textColor="@color/black"
+                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+                    <View   android:layout_marginRight="8dp"    android:alpha="0.5"
+                            android:background="@color/black" android:layout_width="match_parent"
+                            android:layout_height="1dp" android:layout_gravity="center"/>
+
+                </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+            <TextView android:id="@+id/tutor_description"   android:text="家教情况的描述：教理综三科(物理，化学，生物)，最终平时成绩能过230分即可，重点的教授物理\n
+家教情况的描述：教理综三科(物理，化学，生物)，最终平时成绩能过230分即可，重点的教授物理\n
+家教情况的描述：教理综三科(物理，化学，生物)，最终平时成绩能过230分即可，重点的教授物理\n
+家教情况的描述：教理综三科(物理，化学，生物)，最终平时成绩能过230分即可，重点的教授物理\n
+家教情况的描述：教理综三科(物理，化学，生物)，最终平时成绩能过230分即可，重点的教授物理\n
+家教情况的描述：教理综三科(物理，化学，生物)，最终平时成绩能过230分即可，重点的教授物理\n"
+                          android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:paddingLeft="10dp"    android:paddingRight="10dp"
+                          android:layout_marginTop="2dp"
+                />
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:alpha="0.5"/>
+                <TextView android:id="@+id/student_description" android:text="学生情况的描述：调皮，不能静心，物理比较不好\n
+学生情况的描述：调皮，不能静心，物理比较不好\n
+学生情况的描述：调皮，不能静心，物理比较不好\n
+学生情况的描述：调皮，不能静心，物理比较不好\n
+学生情况的描述：调皮，不能静心，物理比较不好\n"
+                          android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:paddingLeft="10dp"    android:paddingRight="10dp"
+                          android:layout_marginTop="2dp"
+                />
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:alpha="0.5"/>
+                <TextView android:id="@+id/teacher_description" android:text="对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n
+对老师的要求：有相关的辅导经验\n"
+                          android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:paddingLeft="10dp"    android:paddingRight="10dp"
+                          android:layout_marginTop="2dp"
+                />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+    <!--
+        <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
 
 </android.support.constraint.ConstraintLayout>

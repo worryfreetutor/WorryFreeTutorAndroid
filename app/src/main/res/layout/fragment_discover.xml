@@ -7,49 +7,48 @@
         android:layout_height="match_parent"
         tools:context=".discover.DiscoverFragment">
 
-    <!-- Your Scrollable View
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
-
-
     <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_height="48dp"
+                android:layout_height="?actionBarSize"
                 android:layout_width="match_parent"
+                app:contentInsetStart="0dp"
                 app:layout_scrollFlags="scroll|enterAlways">
-            <EditText
+            <TextView
+                    android:id="@+id/textView"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:hint="无忧家教资源"
-                    android:textSize="22sp"
-                    android:textColor="@color/white"
-                    android:background="@color/mediumblue"
+                    android:gravity="center_vertical|left"
+                    android:hint="      无忧家教资源搜索"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
                     android:alpha="0.5"
+                    android:background="@drawable/toolbar_tv_shape"
+                    android:paddingLeft="15dp"
+                    android:drawableLeft="@drawable/toolbar_search"
+                    android:clickable="true"
             />
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_height="48dp"
-                android:alpha="0.5"
-                android:background="@color/mediumblue"
-                app:layout_scrollFlags="scroll|enterAlways"
                 android:layout_width="match_parent"
-                app:tabTextColor="@color/white"
-                app:tabSelectedTextColor="@color/red"
+                android:alpha="0.5"
+                android:background="@color/white"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:tabTextColor="@color/black"
+                app:tabSelectedTextColor="@color/blue"
+                app:tabIndicatorColor="@color/blue"
         />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_height="match_parent"
             android:layout_width="match_parent"/>
 

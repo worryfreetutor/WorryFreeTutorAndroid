@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_height="match_parent"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:focusableInTouchMode="true"
+              tools:context=".discover.search.SearchView"
+>
+    <LinearLayout
+            android:id="@+id/search_block"
+            android:layout_height="10dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:paddingRight="10dp"
+    >
+        <ImageView
+                android:id="@+id/search_back"
+                android:layout_height="38dp"
+                android:layout_width="38dp"
+                android:layout_gravity="center_vertical"
+                android:padding="10dp"
+                android:src="@drawable/toolbar_back"
+        />
+        <com.example.kaixuan.worryfreetutor.discover.search.EditText_Clear
+                android:id="@+id/et_search"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="264"
+                android:background="@null"
+                android:drawableLeft="@drawable/toolbar_search"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+        />
+    </LinearLayout>
+
+    <ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+        <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:orientation= "vertical"
+        >
+            <com.example.kaixuan.worryfreetutor.discover.search.SearchListView
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/tv_clear"
+                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:background="#F6F6F6"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    android:text="清楚搜索历史"
+            />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

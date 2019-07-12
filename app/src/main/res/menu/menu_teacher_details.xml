@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/teacher_details_support"
+            android:icon="@drawable/toolbar_support"
+            android:title="点赞"
+            app:showAsAction="never"
+    />
+
+    <item
+            android:id="@+id/teacher_details_share"
+            android:icon="@drawable/toolbar_share"
+            android:title="分享"
+            app:showAsAction="never"
+    />
+
+    <item
+            android:id="@+id/teacher_details_follow"
+            android:icon="@drawable/toolbar_follow"
+            android:title="关注"
+            app:showAsAction="never"
+    />
+
+</menu>

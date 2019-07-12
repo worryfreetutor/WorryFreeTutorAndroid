@@ -1,8 +1,10 @@
 package com.example.kaixuan.worryfreetutor.discover;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.*;
 import android.view.LayoutInflater;
@@ -27,6 +29,7 @@ public class TeacherFragment extends BaseFragment {
 
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private FloatingActionButton floatingActionButton;
 
     @Nullable
     @Override
@@ -58,9 +61,18 @@ public class TeacherFragment extends BaseFragment {
     private void initView() {
         recyclerView = (RecyclerView)mView.findViewById(R.id.recyclerView);
         swipeRefreshLayout = mView.findViewById(R.id.swipeRefreshLayout);
+        floatingActionButton = (FloatingActionButton) mView.findViewById(R.id.student_FButton);
+
     }
 
     private void init() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),TeacherPostActivity.class);
+                startActivity(intent);
+            }
+        });
         final ArrayList<String> arrayList = new ArrayList<>();
         for(int i=0;i<=40;i++){
             arrayList.add("教师"+i+"item");
@@ -70,6 +82,8 @@ public class TeacherFragment extends BaseFragment {
             @Override
             public void OnItemClick(View view, int position) {
                 Toast.makeText(mView.getContext(),"click " + position + " item", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mView.getContext(),TeacherDetailsActivity.class);
+                startActivity(intent);
             }
 
             @Override

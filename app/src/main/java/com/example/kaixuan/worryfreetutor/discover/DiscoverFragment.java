@@ -1,5 +1,7 @@
 package com.example.kaixuan.worryfreetutor.discover;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -10,9 +12,11 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.kaixuan.worryfreetutor.R;
 import com.example.kaixuan.worryfreetutor.base.BaseFragment;
+import com.example.kaixuan.worryfreetutor.discover.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,7 @@ public class DiscoverFragment extends BaseFragment {
     private Toolbar mToolbar;
     private TabLayout mTabLayout;
     private ViewPager viewPager;
+    private TextView textView;
     private List<Fragment> mFragments = new ArrayList<>();
     private List<String> mTitle = new ArrayList<>();
 
@@ -64,10 +69,23 @@ public class DiscoverFragment extends BaseFragment {
         mToolbar.inflateMenu((R.menu.menu_toolbar));
         mTabLayout = mView.findViewById(R.id.tabLayout);
         viewPager = mView.findViewById(R.id.viewpager);
+        textView = mView.findViewById(R.id.textView);
     }
 
 
     private void init() {
+        /*解决搜索框里的图标太大而不适配的问题*/
+        Drawable drawable = getResources().getDrawable(R.drawable.toolbar_search);
+        drawable.setBounds(5,5,60,60);
+        textView.setCompoundDrawables(drawable,null,null,null);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mFragments.add(new StudentFragment());
         mFragments.add(new TeacherFragment());
 

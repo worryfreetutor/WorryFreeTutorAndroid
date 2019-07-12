@@ -1,6 +1,7 @@
 package com.example.kaixuan.worryfreetutor.discover;
 
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,16 +62,16 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         if(holder instanceof CommonViewHolder){
 
             final CommonViewHolder commonViewHolder = (CommonViewHolder) holder;
-            commonViewHolder.mTv.setText(mData.get(position));
+            commonViewHolder.title.setText(mData.get(position));
 
-            commonViewHolder.mTv.setOnClickListener(new View.OnClickListener() {
+            commonViewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos = commonViewHolder.getLayoutPosition();
                     onItemSelectedListener.OnItemClick(commonViewHolder.itemView,pos);
                 }
             });
-            commonViewHolder.mTv.setOnLongClickListener(new View.OnLongClickListener() {
+            commonViewHolder.constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     if(onItemSelectedListener !=null){
@@ -170,11 +171,21 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private  class CommonViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTv;
+        TextView title;
+        TextView price;
+        TextView address;
+        TextView hot;
+        TextView subject;
+        ConstraintLayout constraintLayout;
 
         CommonViewHolder(View itemView) {
             super(itemView);
-            mTv = (TextView) itemView.findViewById(R.id.textView);
+            title = (TextView) itemView.findViewById(R.id.item_title);
+            price = (TextView) itemView.findViewById(R.id.item_price);
+            address = (TextView) itemView.findViewById(R.id.item_address);
+            hot = (TextView) itemView.findViewById(R.id.item_hot);
+            subject = (TextView) itemView.findViewById(R.id.subject);
+            constraintLayout = (ConstraintLayout) itemView.findViewById(R.id.whole_item);
         }
 
     }

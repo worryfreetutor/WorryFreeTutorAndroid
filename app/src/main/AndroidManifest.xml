@@ -18,6 +18,9 @@
         </activity>
         <activity android:name=".discover.StudentDetailsActivity"></activity>
         <activity android:name=".discover.TeacherDetailsActivity"></activity>
+        <activity android:name=".discover.StudentPostActivity"></activity>
+        <activity android:name=".discover.TeacherPostActivity"></activity>
+        <activity android:name=".discover.search.SearchActivity"></activity>
     </application>
     <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"去除自带标签栏-->
 
