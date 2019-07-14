@@ -1,18 +1,19 @@
 package com.example.kaixuan.worryfreetutor.discover;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 import com.example.kaixuan.worryfreetutor.R;
 
-import java.util.ArrayList;
 
 public class StudentDetailsActivity extends AppCompatActivity {
-    //private RecyclerView recyclerView;
 
     private Toolbar toolbar;
 
@@ -20,6 +21,8 @@ public class StudentDetailsActivity extends AppCompatActivity {
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//Activity中设置状态栏透明：
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -32,6 +35,15 @@ public class StudentDetailsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        AppBarLayout mAppBarLayout= (AppBarLayout) findViewById(R.id.appbar);
+        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                toolbar.setBackgroundColor(changeAlpha(getResources().getColor(R.color.blue),Math.abs(verticalOffset*1.0f)/appBarLayout.getTotalScrollRange()));
+            }
+        });
+
 
         //Menu
         toolbar.inflateMenu(R.menu.menu_student_details);
@@ -58,7 +70,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
             }
         });
 
-        //initView();
+        initView();
 
     }
 
@@ -67,23 +79,17 @@ public class StudentDetailsActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_student_details,menu);
         return true;
     }
+
+    /** 根据百分比改变颜色透明度 */
+    private int changeAlpha(int color, float fraction) {
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        int alpha = (int) (Color.alpha(color) * fraction);
+        return Color.argb(alpha, red, green, blue);
+    }
+
    private void initView() {
-//        recyclerView = findViewById(R.id.recyclerView);
-//        final ArrayList<String> arrayList = new ArrayList<>();
-//        for(int i=0;i<=30;i++){
-//            arrayList.add("学生"+i+"item");
-//        }
-//        MyAdapter myAdapter = new MyAdapter(arrayList);
-//        //设置布局管理器
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
-//        layoutManager.setOrientation(OrientationHelper.VERTICAL);
-//        //链接适配器
-//        recyclerView.setAdapter(myAdapter);
-//        //设置分隔线 可选（默认为空）
-//        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-//        //设置增加或删除条目的动画 可选(默认为DefaultItemAnimator)
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
    }
 

@@ -184,7 +184,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             price = (TextView) itemView.findViewById(R.id.item_price);
             address = (TextView) itemView.findViewById(R.id.item_address);
             hot = (TextView) itemView.findViewById(R.id.item_hot);
-            subject = (TextView) itemView.findViewById(R.id.subject);
+            subject = (TextView) itemView.findViewById(R.id.item_subject);
             constraintLayout = (ConstraintLayout) itemView.findViewById(R.id.whole_item);
         }
 
