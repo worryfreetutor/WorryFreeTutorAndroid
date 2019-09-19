@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按下去的背景颜色显示效果 -->
+    <item android:drawable="@drawable/login_button_press" android:state_pressed="true"/>
+
+    <!-- 获取焦点时背景颜色显示效果 -->
+    <!--<item android:drawable="@drawable/btn_press" android:state_focused="true"/>-->
+
+    <!-- 没有任何状态下的背景颜色 -->
+    <item android:drawable="@drawable/login_button_normal"/>
+
+</selector>
