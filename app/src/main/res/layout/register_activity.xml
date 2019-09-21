@@ -157,7 +157,7 @@
                     android:visibility="visible"/>
 
 
-                <com.example.mymfnapp.TimingButton
+                <com.example.kaixuan.worryfreetutor.login.TimingButton
                     android:id="@+id/Register_check_bt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
