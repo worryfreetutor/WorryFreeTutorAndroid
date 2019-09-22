@@ -26,6 +26,11 @@ public class AliyunSmsUtils
     //产品域名,开发者无需替换
     static final String domain = "dysmsapi.aliyuncs.com";
 
+    /** AccessKey包括AccessKeyId和AccessKeySecret。
+    AccessKeyId用于标识用户。
+    AccessKeySecret是用来验证用户的密钥。AccessKeySecret必须保密。*/
+
+    // 不要把这个放到github上公开，不安全
     // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
     static final String accessKeyId = "LTAIgYqTJIJhKfgt";  // TODO 修改成自己的
     static final String accessKeySecret = "JYOtrceiRIQrF3dO4sAtUOBLW5Vy7g";   // TODO 修改成自己的

@@ -14,7 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.kaixuan.worryfreetutor.R;
+import com.example.kaixuan.worryfreetutor.base.BaseURL;
 import com.example.kaixuan.worryfreetutor.main.MainActivity;
+import com.example.kaixuan.worryfreetutor.net.loginProtocol;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by lenovo on 2019/5/31.
@@ -48,7 +53,16 @@ public class LoginActivity extends AppCompatActivity
                 if(!acc.isEmpty() && !pw.isEmpty())
                 {
 					//在此处发起网络请求
-					
+
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .client(new OkHttpClient())
+                            .baseUrl(BaseURL.getBaseUrl())
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .build();
+
+                    loginProtocol lp = retrofit.create(loginProtocol.class);
+                    // 这里使用异步还是同步好？ 异步感觉不能通注册界面一样这样在run内部进行activity跳转操作了，试试吧
+
                     Toast.makeText(LoginActivity.this, "账号为：" + accEt.getText() +
                             " 密码为：" + pwEt.getText(), Toast.LENGTH_SHORT).show();
 							

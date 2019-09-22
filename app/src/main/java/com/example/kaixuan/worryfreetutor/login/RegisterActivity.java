@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,13 +20,19 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aliyuncs.dysmsapi.model.v20170525.QuerySendDetailsResponse;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.aliyuncs.exceptions.ClientException;
 import com.example.kaixuan.worryfreetutor.R;
+import com.example.kaixuan.worryfreetutor.base.BaseURL;
+import com.example.kaixuan.worryfreetutor.net.loginProtocol;
+import okhttp3.OkHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-import static com.example.kaixuan.worryfreetutor.login.AliyunSmsUtils.querySendDetails;
-import static com.example.kaixuan.worryfreetutor.login.AliyunSmsUtils.sendSms;
+
+import java.io.IOException;
 
 
 /**
@@ -42,6 +50,9 @@ public class RegisterActivity extends AppCompatActivity
     private static int newcode;
     private Context context;
     private String code;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,11 +73,16 @@ public class RegisterActivity extends AppCompatActivity
                 else
                 {
                     checkBt.start();
+
+                    /*验证码是随机生产的，不安全*/
                     setNewcode();
                     code = Integer.toString(getNewcode());
+
                     Toast.makeText(context,"正在发送验证码，请注意查收", Toast.LENGTH_SHORT).show();
 
+                    /** 此功能已经测试好，待整体完成再删除注释
                     //发短信
+                     private String mtest= "Register+";
                     new Thread(new Runnable()
                     {
                         @Override
@@ -77,10 +93,11 @@ public class RegisterActivity extends AppCompatActivity
                                 //发短信
                                 SendSmsResponse response = sendSms(phoneEt.getText().toString(),code);
                                 System.out.println("短信接口返回的数据----------------");
-                                System.out.println("Code=" + response.getCode());
-                                System.out.println("Message=" + response.getMessage());
-                                System.out.println("RequestId=" + response.getRequestId());
-                                System.out.println("BizId=" + response.getBizId());
+                                System.out.println(mtest+"Code=" + response.getCode());
+
+                                System.out.println(mtest+"Message=" + response.getMessage());
+                                System.out.println(mtest+"RequestId=" + response.getRequestId());
+                                System.out.println(mtest+"BizId=" + response.getBizId());
 
 
                                 //查明细
@@ -88,23 +105,23 @@ public class RegisterActivity extends AppCompatActivity
                                 {
                                     QuerySendDetailsResponse querySendDetailsResponse = querySendDetails(response.getBizId());
                                     System.out.println("短信明细查询接口返回数据----------------");
-                                    System.out.println("Code=" + querySendDetailsResponse.getCode());
-                                    System.out.println("Message=" + querySendDetailsResponse.getMessage());
+                                    System.out.println(mtest+"Code=" + querySendDetailsResponse.getCode());
+                                    System.out.println(mtest+"Message=" + querySendDetailsResponse.getMessage());
                                     int i = 0;
                                     for(QuerySendDetailsResponse.SmsSendDetailDTO smsSendDetailDTO : querySendDetailsResponse.getSmsSendDetailDTOs())
                                     {
-                                        System.out.println("SmsSendDetailDTO["+i+"]:");
-                                        System.out.println("Content=" + smsSendDetailDTO.getContent());
-                                        System.out.println("ErrCode=" + smsSendDetailDTO.getErrCode());
-                                        System.out.println("OutId=" + smsSendDetailDTO.getOutId());
-                                        System.out.println("PhoneNum=" + smsSendDetailDTO.getPhoneNum());
-                                        System.out.println("ReceiveDate=" + smsSendDetailDTO.getReceiveDate());
-                                        System.out.println("SendDate=" + smsSendDetailDTO.getSendDate());
-                                        System.out.println("SendStatus=" + smsSendDetailDTO.getSendStatus());
-                                        System.out.println("Template=" + smsSendDetailDTO.getTemplateCode());
+                                        System.out.println(mtest+"SmsSendDetailDTO["+i+"]:");
+                                        System.out.println(mtest+"Content=" + smsSendDetailDTO.getContent());
+                                        System.out.println(mtest+"ErrCode=" + smsSendDetailDTO.getErrCode());
+                                        System.out.println(mtest+"OutId=" + smsSendDetailDTO.getOutId());
+                                        System.out.println(mtest+"PhoneNum=" + smsSendDetailDTO.getPhoneNum());
+                                        System.out.println(mtest+"ReceiveDate=" + smsSendDetailDTO.getReceiveDate());
+                                        System.out.println(mtest+"SendDate=" + smsSendDetailDTO.getSendDate());
+                                        System.out.println(mtest+"SendStatus=" + smsSendDetailDTO.getSendStatus());
+                                        System.out.println(mtest+"Template=" + smsSendDetailDTO.getTemplateCode());
                                     }
-                                    System.out.println("TotalCount=" + querySendDetailsResponse.getTotalCount());
-                                    System.out.println("RequestId=" + querySendDetailsResponse.getRequestId());
+                                    System.out.println(mtest+"TotalCount=" + querySendDetailsResponse.getTotalCount());
+                                    System.out.println(mtest+"RequestId=" + querySendDetailsResponse.getRequestId());
                                 }
                             } catch (ClientException e)
                             {
@@ -116,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity
 
                         }
                     }).start();
+                    */
                     Toast.makeText(context, "手机号" + phoneEt.getText().toString()
                             + "发送的验证码为：" + code, Toast.LENGTH_SHORT).show();
 
@@ -135,7 +153,8 @@ public class RegisterActivity extends AppCompatActivity
                 }
                 else if (false)
                 {
-                    //此处还应检查昵称是否重复
+                    /**此处还应检查昵称是否重复
+                    */
                 }
                 else if(!manRb.isChecked()&&!womanRb.isChecked())
                 {
@@ -174,13 +193,72 @@ public class RegisterActivity extends AppCompatActivity
 
 					//发起网络请求
 
-                    Toast.makeText(context, "注册成功！", Toast.LENGTH_SHORT).show();
-					
-					//跳转至登录界面
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    intent.putExtra("account",phoneEt.getText().toString());
-                    startActivity(intent);
-                    finish();
+                    /**
+                     * 修改部分
+                     */
+                    // 创建Retrofit实例
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .client(new OkHttpClient())
+                            .baseUrl(BaseURL.getBaseUrl())
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .build();
+
+                    //生成代理接口
+                    loginProtocol lp = retrofit.create(loginProtocol.class);
+
+                    //调用具体接口方法
+
+                    final Call<String> call = lp.mRegister(phoneEt.getText().toString(),surePwEt.getText().toString());
+
+                    //同步请求(数据量不大),不用使用Handler，如何做到？但响应时间若大于5S,ANR
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try{
+                                Response<String> response = call.execute();
+                                // 防止空指针错误 ，秒退
+                                if(response.body() != null) {
+                                     JSONObject jsonObject = new JSONObject(response.body());
+                                    //2. 内部类和外部类并不在同一个class文件，所有无法直接改变其参数，故底层设计人员需其定义为final
+                                    //3. r_code = jsonObject.getString("code");
+                                    //4.
+                                    String str ;
+                                     if(jsonObject.getString("code") .equals("0")){
+                                        // 若在这里放finish(),有效果？
+                                        // 罢了，还是handler最合适,注意内存泄漏问题 但是handler里面也是内部类
+                                         //-----------
+                                         //Android是不能直接在子线程中弹出Toast的
+                                         str = "注册成功！";
+
+                                         //跳转至登录界面
+                                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                         intent.putExtra("account",phoneEt.getText().toString());
+                                         startActivity(intent);
+                                         finish();
+                                    }else if(jsonObject.getString("code") .equals("010101")){
+                                         // 账号类型哪不对
+                                         str = jsonObject.getString("message");
+                                     }else if(jsonObject.getString("code") .equals("010102")){
+                                         //手机号已经存在
+                                         str = jsonObject.getString("message");
+                                     }else {
+                                         str = jsonObject.getString("请检查网络");
+                                     }
+                                     Looper.prepare();
+                                     Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+                                     Looper.loop();
+
+                                    //Message message = Message.obtain(); // 少用 new Message(),性能差
+                                    //message.obj = response.body();
+
+                                }
+                            }catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
                 }
             }
         });
@@ -232,11 +310,12 @@ public class RegisterActivity extends AppCompatActivity
     {
         return newcode;
     }
-    public static void setNewcode()
-    {
-        newcode = (int)(Math.random()*9999)+100;  //每次调用生成一位四位数的随机数
-    }
 
+    public static void setNewcode( )
+    {
+        newcode = (int)(Math.random()*9999)+100;  //每次调用生成一位四位数的随机数，这里根本没保证4位
+        //newcode = x;
+    }
 
     /**
      * 重写返回键，实现返回效果
