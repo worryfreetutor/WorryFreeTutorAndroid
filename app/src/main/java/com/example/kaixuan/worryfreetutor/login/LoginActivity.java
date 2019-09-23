@@ -3,6 +3,7 @@ package com.example.kaixuan.worryfreetutor.login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -18,6 +19,11 @@ import com.example.kaixuan.worryfreetutor.base.BaseURL;
 import com.example.kaixuan.worryfreetutor.main.MainActivity;
 import com.example.kaixuan.worryfreetutor.net.loginProtocol;
 import okhttp3.OkHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
@@ -61,15 +67,44 @@ public class LoginActivity extends AppCompatActivity
                             .build();
 
                     loginProtocol lp = retrofit.create(loginProtocol.class);
+                    Call<String> call = lp.mLogin(accEt.getText().toString(),pwEt.getText().toString());
                     // 这里使用异步还是同步好？ 异步感觉不能通注册界面一样这样在run内部进行activity跳转操作了，试试吧
 
-                    Toast.makeText(LoginActivity.this, "账号为：" + accEt.getText() +
-                            " 密码为：" + pwEt.getText(), Toast.LENGTH_SHORT).show();
-							
-					//跳转到主页面
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response.body());
+                                String str="欢迎使用";
+                                if(jsonObject.getString("code").equals("0")){
+                                    //跳转到主页面
+                                    //jsonObject.getString("access_token");
+                                    //jsonObject.getString("refresh_token")
+
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+
+                                }else{
+                                    str = jsonObject.getString("message");
+                                }
+                                //同步需要Looper.prepare()，异步不需要？
+                                Toast.makeText(LoginActivity.this, str, Toast.LENGTH_SHORT).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            // 请求失败,do something
+                        }
+                    });
+
+
+
+
                 }
                 else
                 {
