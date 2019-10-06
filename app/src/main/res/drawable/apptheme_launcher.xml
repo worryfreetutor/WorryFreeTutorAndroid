@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque"
+>
+    <!--    android:opacity="opaque"  防止在启动的时候出现背景的闪烁-->
+    <!--烟白色的颜色-->
+    <item android:drawable="@color/whitesmoke"/>
+
+    <!--产品logo-->
+    <item
+            android:top="130dp"
+    >
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/login_ic_wft"
+        />
+    </item>
+
+</layer-list>

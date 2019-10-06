@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.example.kaixuan.worryfreetutor.R;
+import com.example.kaixuan.worryfreetutor.main.MainActivity;
 
 public class ChooseActivity extends AppCompatActivity
 {
@@ -22,7 +23,7 @@ public class ChooseActivity extends AppCompatActivity
         protected void onCreate(Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.choose_activity);
+            setContentView(R.layout.activitylg_choose);
 
         init();
         init_animation();
@@ -47,7 +48,7 @@ public class ChooseActivity extends AppCompatActivity
             {
                 //Toast.makeText(ChooseActivity.this, "注册！", Toast.LENGTH_SHORT).show();
                 end_animation();
-                Intent intent = new Intent(ChooseActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(ChooseActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -57,9 +58,9 @@ public class ChooseActivity extends AppCompatActivity
 
     private void init()
     {
-        buLogin = (Button) findViewById(R.id.login_button);
-        buRegister = (Button) findViewById(R.id.register_button);
-        ivLogo = (ImageView) findViewById(R.id.ImgLogo);
+        buLogin = (Button) findViewById(R.id.Choose_btn_login);
+        buRegister = (Button) findViewById(R.id.Choose_btn_exp);
+        ivLogo = (ImageView) findViewById(R.id.Choose_iv_logo);
     }
 
     private void init_animation()

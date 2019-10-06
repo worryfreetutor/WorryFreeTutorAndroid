@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+            android:id="@+id/SMLogin_imageView"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:src="@drawable/login_ic_wft"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="88dp"/>
+
+    <EditText
+            android:id="@+id/SMLogin_phone_et"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textSize="20sp"
+            android:ellipsize="end"
+            android:background="@null"
+            android:hint="@string/SMLogin_acc_et"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textCursorDrawable="@drawable/login_cursor_color"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/SMLogin_imageView"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="35dp"
+            android:paddingLeft="10dp"
+
+    />
+    <ImageButton
+            android:id="@+id/SMLogin_clean1"
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:background="@drawable/login_clean"
+            app:layout_constraintLeft_toRightOf="@id/SMLogin_phone_et"
+            app:layout_constraintBottom_toBottomOf="@id/SMLogin_phone_et"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:visibility="invisible"
+    />
+
+    <View
+            android:id="@+id/SMLogin_view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/SMLogin_phone_et"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/login_view"
+    />
+
+
+
+    <EditText
+            android:id="@+id/SMLogin_auth_et"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textSize="20sp"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="@string/SMLogin_auth_et"
+            android:inputType="number"
+            android:singleLine="false"
+            android:maxLength="6"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textCursorDrawable="@drawable/login_cursor_color"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/SMLogin_phone_et"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="150dp"
+            android:layout_marginLeft="30dp"
+            android:paddingLeft="10dp"
+    />
+
+    <ImageButton
+            android:id="@+id/SMLogin_clean2"
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:background="@drawable/login_clean"
+            app:layout_constraintLeft_toRightOf="@id/SMLogin_auth_et"
+            app:layout_constraintBottom_toBottomOf="@id/SMLogin_auth_et"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="2dp"
+            android:visibility="invisible"
+    />
+
+    <com.example.kaixuan.worryfreetutor.login.TimingButton
+            android:id="@+id/SMLogin_auth_btn"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/SMLogin_auth_btn"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/SMLogin_clean2"
+            android:clickable="true"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+
+    />
+
+    <View
+            android:id="@+id/SMLogin_view2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/SMLogin_clean2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/login_view"
+    />
+
+    <Button
+            android:id="@+id/SMLogin_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/SMLogin_bt"
+            android:textColor="@color/whitesmoke"
+            android:textSize="25sp"
+            android:background="@drawable/login_button"
+            app:layout_constraintTop_toBottomOf="@+id/SMLogin_auth_et"
+            android:layout_marginTop="25dp"
+    />
+
+</android.support.constraint.ConstraintLayout>

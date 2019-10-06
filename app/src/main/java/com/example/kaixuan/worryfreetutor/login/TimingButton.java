@@ -27,7 +27,7 @@ public class TimingButton extends android.support.v7.widget.AppCompatButton
         interval = 1000;
         //psText = typedArray.getString(R.styleable.TimingButton_tb_psText);
         psText = "重新获取";
-        setBackgroundResource(R.drawable.timing_button); //设置默认样式
+        setBackgroundResource(R.drawable.login_register_timing_button); //设置默认样式
         typedArray.recycle();
     }
 

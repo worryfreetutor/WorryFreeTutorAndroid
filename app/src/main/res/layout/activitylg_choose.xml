@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@color/whitesmoke"
+>
+    <ImageView
+            android:id="@+id/Choose_iv_logo"
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="130dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/login_ic_wft"
+    />
+    <TextView
+            android:id="@+id/Choose_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="找家教 选无忧"
+            android:textColor="@color/mediumblue"
+            android:textStyle="italic"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/Choose_iv_logo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+    />
+    <Button
+            android:id="@+id/Choose_btn_login"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="手机号登录"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="@color/whitesmoke"
+            android:background="@drawable/login_choose_btn1"
+            app:layout_constraintTop_toBottomOf="@id/Choose_tv"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="100dp"
+    />
+    <Button
+            android:id="@+id/Choose_btn_exp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/login_choose_btn2"
+            android:textColor="@color/deepskyblue"
+            android:text="立即体验"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/Choose_btn_login"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="10dp"
+
+    />
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/guideline" app:layout_constraintGuide_begin="20dp"
+                                          android:orientation="vertical"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/guideline2" app:layout_constraintGuide_begin="20dp"
+                                          android:orientation="horizontal"/>
+
+</android.support.constraint.ConstraintLayout>

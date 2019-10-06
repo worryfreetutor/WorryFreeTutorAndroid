@@ -3,11 +3,8 @@ package com.example.kaixuan.worryfreetutor.login;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -15,47 +12,32 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-
 import com.example.kaixuan.worryfreetutor.R;
 import com.example.kaixuan.worryfreetutor.base.GetRetrofit;
 import com.example.kaixuan.worryfreetutor.base.SimplifyLogin;
 import com.example.kaixuan.worryfreetutor.net.loginProtocol;
-import org.json.JSONException;
-import org.json.JSONObject;
-import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-
-import java.io.IOException;
 
 import static com.example.kaixuan.worryfreetutor.base.SimplifyLogin.getNewcode;
 import static com.example.kaixuan.worryfreetutor.base.SimplifyLogin.setNewcode;
 
+public class FogotPWActivity extends AppCompatActivity  implements View.OnClickListener,TextWatcher {
 
-/**
- * Created by huihui on 2019/6/1.
- */
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener,TextWatcher
-{
     private EditText phoneEt, authEt,pwEt,surePwEt;
     private ImageButton ibtn_clean1,ibtn_clean2,ibtn_clean3,ibtn_clean4,ibtn_pw_eye,ibtn_surepw_eye;
-    private Button registerBt,registerDutyBt;
+    private Button FogotPWBt;
     private TimingButton checkBt;
-    private CheckBox cbox;
     private static int newcode; // 注意，这是个静态变量
     private Context context;
     private String code;
     private Boolean isPwOpenEye = false,isSurePwOpenEye = false;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activitylg_register);
+        setContentView(R.layout.activitylg_fogotpw);
         initView();
         init();
     }
@@ -64,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onResume();
 
         /**
-         * 防止activity变换时，造成RegisterBt状态错误
+         * 防止activity变换时，造成FogotPWBt状态错误
          * */
         rbtnEnabled();
         if(!phoneEt.getText().toString().isEmpty()){
@@ -136,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if(inputMethodManager.isActive())
             {
-                inputMethodManager.hideSoftInputFromWindow(RegisterActivity.this.getCurrentFocus().getWindowToken(), 0);
+                inputMethodManager.hideSoftInputFromWindow(FogotPWActivity.this.getCurrentFocus().getWindowToken(), 0);
             }
 
             return true;
@@ -155,25 +137,25 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void showNormalDialog()
     {
-        final AlertDialog.Builder normalDialog = new AlertDialog.Builder(RegisterActivity.this);
+        final AlertDialog.Builder normalDialog = new AlertDialog.Builder(FogotPWActivity.this);
         normalDialog.setTitle("xxx免责条例");
         normalDialog.setMessage("各种内容……");
         normalDialog.setPositiveButton("确定", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        //...To-do
-                    }
-                });
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                //...To-do
+            }
+        });
         normalDialog.setNegativeButton("关闭", new DialogInterface.OnClickListener()
         {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        //...To-do
-                    }
-                });
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                //...To-do
+            }
+        });
         // 显示
         normalDialog.show();
     }
@@ -181,7 +163,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.Register_auth_btn:
+            case R.id.FogotPW_auth_btn:
                 if(phoneEt.getText().toString().isEmpty())
                 {
                     Toast.makeText(context, "手机号不能为空！", Toast.LENGTH_SHORT).show();
@@ -204,7 +186,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                 }
                 break;
-            case R.id.Register_bt:
+            case R.id.FogotPW_bt:
                 if(phoneEt.getText().toString().isEmpty())
                 {
                     Toast.makeText(context, "手机号不能为空！", Toast.LENGTH_SHORT).show();
@@ -243,7 +225,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     //生成代理接口
                     loginProtocol lp = retrofit.create(loginProtocol.class);
                     //调用具体接口方法
-                    final Call<String> call = lp.mRegister(phoneEt.getText().toString(),surePwEt.getText().toString());
+                    /*
+                    final Call<String> call = lp.mFogotPW(phoneEt.getText().toString(),surePwEt.getText().toString());
 
                     //同步请求(数据量不大),不用使用Handler，如何做到？但响应时间若大于5S,ANR
                     new Thread(new Runnable() {
@@ -263,10 +246,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                         // 罢了，还是handler最合适,注意内存泄漏问题 但是handler里面也是内部类
                                         //-----------
                                         //Android是不能直接在子线程中弹出Toast的
-                                        str = "注册成功！";
+                                        str = "修改密码成功！";
 
                                         //跳转至登录界面
-                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                        Intent intent = new Intent(FogotPWActivity.this, LoginActivity.class);
                                         intent.putExtra("account",phoneEt.getText().toString());
                                         startActivity(intent);
                                         finish();
@@ -293,34 +276,31 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 e.printStackTrace();
                             }
                         }
-                    }).start();
+                    }).start();*/
                 }
                 break;
-            case R.id.Register_duty_button:
-                //服务协议
-                showNormalDialog();
+
+            case R.id.FogotPW_clean1:
+                phoneEt.setText("");
                 break;
-             case R.id.Register_clean1:
-                 phoneEt.setText("");
-                 break;
-            case R.id.Register_clean2:
+            case R.id.FogotPW_clean2:
                 authEt.setText("");
-                 break;
-            case R.id.Register_clean3:
+                break;
+            case R.id.FogotPW_clean3:
                 pwEt.setText("");
-                 break;
-            case R.id.Register_clean4:
+                break;
+            case R.id.FogotPW_clean4:
                 surePwEt.setText("");
-                 break;
-            case R.id.Register_pw_eye:
+                break;
+            case R.id.FogotPW_pw_eye:
                 isPwOpenEye = SimplifyLogin.onClickeEye(isPwOpenEye,ibtn_pw_eye,pwEt);
                 break;
-            case R.id.Register_surepw_eye:
+            case R.id.FogotPW_surepw_eye:
                 isSurePwOpenEye = SimplifyLogin.onClickeEye(isSurePwOpenEye,ibtn_surepw_eye,surePwEt);
                 break;
-             default:
+            default:
 
-                 break;
+                break;
         }
     }
 
@@ -358,28 +338,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void initView()
     {
-        phoneEt =  $(R.id.Register_phone_et);
-        authEt = $(R.id.Register_auth_et);
-        pwEt =  $(R.id.Register_pw_et);
-        surePwEt =  $(R.id.Register_surepw_et);
+        phoneEt =  $(R.id.FogotPW_phone_et);
+        authEt = $(R.id.FogotPW_auth_et);
+        pwEt =  $(R.id.FogotPW_pw_et);
+        surePwEt =  $(R.id.FogotPW_surepw_et);
         phoneEt.addTextChangedListener(this);
         authEt.addTextChangedListener(this);
         pwEt.addTextChangedListener(this);
         surePwEt.addTextChangedListener(this);
 
-        checkBt =  $(R.id.Register_auth_btn);
+        checkBt =  $(R.id.FogotPW_auth_btn);
         checkBt.setOnClickListener(this);
 
-        registerBt =  $(R.id.Register_bt);
-        registerBt.setEnabled(false);
-        registerBt.setOnClickListener(this);
+        FogotPWBt =  $(R.id.FogotPW_bt);
+        FogotPWBt.setEnabled(false);
+        FogotPWBt.setOnClickListener(this);
 
-        ibtn_clean1 =  $(R.id.Register_clean1);
-        ibtn_clean2 =  $(R.id.Register_clean2);
-        ibtn_clean3 =  $(R.id.Register_clean3);
-        ibtn_clean4 =  $(R.id.Register_clean4);
-        ibtn_pw_eye =  $(R.id.Register_pw_eye);
-        ibtn_surepw_eye =  $(R.id.Register_surepw_eye);
+        ibtn_clean1 =  $(R.id.FogotPW_clean1);
+        ibtn_clean2 =  $(R.id.FogotPW_clean2);
+        ibtn_clean3 =  $(R.id.FogotPW_clean3);
+        ibtn_clean4 =  $(R.id.FogotPW_clean4);
+        ibtn_pw_eye =  $(R.id.FogotPW_pw_eye);
+        ibtn_surepw_eye =  $(R.id.FogotPW_surepw_eye);
 
         ibtn_clean1.setOnClickListener(this);
         ibtn_clean2.setOnClickListener(this);
@@ -388,38 +368,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         ibtn_pw_eye.setOnClickListener(this);
         ibtn_surepw_eye.setOnClickListener(this);
 
-        registerDutyBt =  $(R.id.Register_duty_button);
-        cbox =  $(R.id.Register_checkBox);
-        registerDutyBt.setOnClickListener(this);
-        cbox.setOnClickListener(this);
 
-
-        cbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
-                if(isChecked)
-                {
-                    rbtnEnabled();
-                }
-                else
-                {
-                    rbtnEnabled();
-                }
-            }
-        });
     }
 
     private void rbtnEnabled(){
         if(!phoneEt.getText().toString().isEmpty() && !authEt.getText().toString().isEmpty()
-                && !pwEt.getText().toString().isEmpty() && !surePwEt.getText().toString().isEmpty()
-                && cbox.isChecked()){
-            SimplifyLogin.btnEnabled(this, registerBt, true);
+                && !pwEt.getText().toString().isEmpty() && !surePwEt.getText().toString().isEmpty()){
+            SimplifyLogin.btnEnabled(this, FogotPWBt, true);
         }else {
-            SimplifyLogin.btnEnabled(this, registerBt, false);
+            SimplifyLogin.btnEnabled(this, FogotPWBt, false);
         }
 
     }
-
 }

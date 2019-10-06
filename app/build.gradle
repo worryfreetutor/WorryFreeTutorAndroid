@@ -6,6 +6,9 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+//butterknife的尝试
+//apply plugin: 'com.android.library'
+//apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 27
@@ -23,9 +26,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding{
         enabled = true;
     }
+
+    //butterknife的尝试
+    //compileOptions {
+      //   sourceCompatibility JavaVersion.VERSION_1_8
+       //  targetCompatibility JavaVersion.VERSION_1_8
+   // }
+
+
     //为了使res中的xml文件可以分类进文件夹
     /*
     sourceSets{
@@ -48,8 +60,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.jakewharton:butterknife:8.6.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     //阿里云短信服务
@@ -59,4 +69,12 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.2.0'
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-scalars:2.6.1'
+
+    // butterknife的尝试
+    // 放弃了，配置一直有问题，并且如果大量使用butterknife，会导致编译速度非常慢，debug 1分钟，编译运行10分钟的窘境）
+    // 但作为一个优秀的框架，其原理值得一学
+    //implementation 'com.jakewharton:butterknife:10.2.0'
+    //annotationProcessor  'com.jakewharton:butterknife-compiler:10.2.0'
+
+
 }

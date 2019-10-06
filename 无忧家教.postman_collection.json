@@ -1,0 +1,1355 @@
+{
+	"info": {
+		"_postman_id": "52560939-4538-4a57-a14e-2dcfa0dae1b2",
+		"name": "无忧家教",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "account",
+							"value": "13542147377",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "repassword",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8522b2f6-4437-4dfd-b1a4-a9125b367c15",
+						"exec": [
+							"var data = JSON.parse(responseBody);\rif (data.access_token) {\r    pm.environment.set(\"access_token\", data.access_token);\r}\rif (data.refresh_token) {\r    pm.environment.set(\"refresh_token\", data.refresh_token);\r}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "account",
+							"value": "13542147377",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/refresh",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生发布项目",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "sex",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "汕头大学",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "大一",
+							"type": "text"
+						},
+						{
+							"key": "tutorial",
+							"value": "高等数学",
+							"type": "text"
+						},
+						{
+							"key": "free_time",
+							"value": "我是一只小毛驴",
+							"type": "text"
+						},
+						{
+							"key": "compensation",
+							"value": "饭，肉，奶茶酬",
+							"type": "text"
+						},
+						{
+							"key": "stu_situation",
+							"value": "这个学生很辣鸡",
+							"type": "text"
+						},
+						{
+							"key": "sex_demand",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "other_demand",
+							"value": "希望是个漂亮小姐姐，呜呜呜，这个路由参数好多啊。",
+							"type": "text"
+						},
+						{
+							"key": "expire_date",
+							"value": "2019-07-26 11:28:51",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/publish",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生修改已发布信息",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "item_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "汕头大学",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "大二",
+							"type": "text"
+						},
+						{
+							"key": "tutorial",
+							"value": "英语",
+							"type": "text"
+						},
+						{
+							"key": "free_time",
+							"value": "每天晚上11点",
+							"type": "text"
+						},
+						{
+							"key": "compensation",
+							"value": "饭，肉，奶茶酬",
+							"type": "text"
+						},
+						{
+							"key": "stu_situation",
+							"value": "这个学生很辣鸡",
+							"type": "text"
+						},
+						{
+							"key": "sex_demand",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "other_demand",
+							"value": "希望是个漂亮小姐姐，呜呜呜，这个路由参数好多啊。",
+							"type": "text"
+						},
+						{
+							"key": "expire_date",
+							"value": "2019-07-26 11:28:51",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/modify",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"modify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除项目",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/delete?item_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取学生项目列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/getItemList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"getItemList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取学生历史项目列表",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13bcb216-5a2f-4e78-99e0-7811b673f654",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/getHistroyItemList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"getHistroyItemList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取学生项目详情",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiaWF0IjoxNTY0NDE0MDA1LCJleHAiOjE1NjQ0MTc2MDV9.mgb-qfMgHOF37ZIlKL7uBj9GOVMKXI3qmwdROoYFuIE",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiaWF0IjoxNTY0NDE0MDA1LCJleHAiOjE1NjQ0MTc2MDV9.mgb-qfMgHOF37ZIlKL7uBj9GOVMKXI3qmwdROoYFuIE",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "item_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/getItemDetail",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"getItemDetail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "老师申请学生项目",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "item_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "birthplace",
+							"value": "汕头",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "school",
+							"value": "汕头大学",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "大二",
+							"type": "text"
+						},
+						{
+							"key": "major",
+							"value": "计算机",
+							"type": "text"
+						},
+						{
+							"key": "experience",
+							"value": "曾经教过小学生",
+							"type": "text"
+						},
+						{
+							"key": "subject",
+							"value": "英语，c语言",
+							"type": "text"
+						},
+						{
+							"key": "free_time",
+							"value": "每个晚上你猜",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "13928394",
+							"type": "text"
+						},
+						{
+							"key": "other",
+							"value": "你猜",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teacher/apply",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teacher",
+						"apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "老师修改申请表",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "item_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377",
+							"type": "text"
+						},
+						{
+							"key": "birthplace",
+							"value": "汕头",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "school",
+							"value": "汕头大学",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "大二",
+							"type": "text"
+						},
+						{
+							"key": "major",
+							"value": "计算机",
+							"type": "text"
+						},
+						{
+							"key": "experience",
+							"value": "曾经教过小学生",
+							"type": "text"
+						},
+						{
+							"key": "subject",
+							"value": "我只是想测试一下",
+							"type": "text"
+						},
+						{
+							"key": "free_time",
+							"value": "嘿嘿",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "13928394",
+							"type": "text"
+						},
+						{
+							"key": "other",
+							"value": "你猜",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teacher/modifyApplicationForm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teacher",
+						"modifyApplicationForm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除申请表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teacher/deleteApplicationForm?item_id=3&teacher_id=13542147377",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teacher",
+						"deleteApplicationForm"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "3"
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生获取老师申请表列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/getTeacherFormList?item_id=3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"getTeacherFormList"
+					],
+					"query": [
+						{
+							"key": "teacher_id",
+							"value": "13542147377",
+							"disabled": true
+						},
+						{
+							"key": "item_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生获取老师申请表详情",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoicmVmcmVzaF90b2tlbiIsImlhdCI6MTU2Mjg0OTgxMiwiZXhwIjoxNTY1NDQxODEyfQ.PA3L8NZtAJBMkPGB6DPqCHxqpGbGPoHi_8t52kFKVR4",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/getTeacherForm?item_id=1&teacher_id=13542147377",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"getTeacherForm"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "1"
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "老师获取自己申请表列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teacher/getStudentFormList?",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teacher",
+						"getStudentFormList"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "老师获取自己申请表详情",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiaWF0IjoxNTY1NTM0MDI1LCJleHAiOjE1NjU1Mzc2MjV9.nrUmZraznSkyK9M2aIwVrNibGLvgcWFKC3NjMK85OR4",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiaWF0IjoxNTY1NTM0MDI1LCJleHAiOjE1NjU1Mzc2MjV9.nrUmZraznSkyK9M2aIwVrNibGLvgcWFKC3NjMK85OR4",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teacher/getApplicationFormDetail?item_id=1&teacher_id=13542147377",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teacher",
+						"getApplicationFormDetail"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "1"
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生选择老师",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "item_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "teacher_id_array",
+							"value": "13542147377",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/select",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"select"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生取消选择老师",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/unselect?item_id=1&teacher_id=13542147377",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"unselect"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "1"
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生设置项目为完成状态",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/finish?item_id=3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"finish"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生评价-学生项目",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "item_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377",
+							"type": "text"
+						},
+						{
+							"key": "student_id",
+							"value": "13542147377",
+							"type": "text"
+						},
+						{
+							"key": "score",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "hhhh",
+							"type": "text"
+						},
+						{
+							"key": "is_anonymous",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/evaluate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "学生修改评价-学生项目",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "item_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "teacher_id",
+							"value": "13542147377",
+							"type": "text"
+						},
+						{
+							"key": "student_id",
+							"value": "13542147377",
+							"type": "text"
+						},
+						{
+							"key": "score",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "我是个滴滴",
+							"type": "text"
+						},
+						{
+							"key": "is_anonymous",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/modifyEvaluate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"modifyEvaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取学生项目评价信息",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiaWF0IjoxNTY1NjY2OTE0LCJleHAiOjE1NjU2NzA1MTR9.hRS3N-zW_UwWiurSU3JCWn1YEGBSKgom2nuBTW_MDrU",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTM1NDIxNDczNzciLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiaWF0IjoxNTY1NjY2OTE0LCJleHAiOjE1NjU2NzA1MTR9.hRS3N-zW_UwWiurSU3JCWn1YEGBSKgom2nuBTW_MDrU",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/getItemEvaluate?item_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"getItemEvaluate"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "收藏学生项目",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/collect?item_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"collect"
+					],
+					"query": [
+						{
+							"key": "accont",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "item_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取消收藏学生项目",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/cancelCollect?item_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"cancelCollect"
+					],
+					"query": [
+						{
+							"key": "accont",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "item_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取收藏列表",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/student/getCollectionList?",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"student",
+						"getCollectionList"
+					],
+					"query": [
+						{
+							"key": "item_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "accont",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

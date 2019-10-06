@@ -1,4 +1,17 @@
 <resources>
-    <string name="app_name">WorryFreeTutor</string>
-    <string name="action_settings">settings</string>>
+    <string name="app_name">无忧家教</string>
+    <string name="action_settings">settings</string>
+
+
+    <string name="Login_acc_et">请输入手机号</string>
+    <string name="Login_pw_et"> 请输入密码</string>
+    <string name="Login_forgot_pw"> 忘记密码</string>
+    <string name="Login_bt"> 密码登陆</string>
+    <string name="Login_sm_tv"> 短信验证码登录</string>
+    <string name="Login_rg_tv"> 注册</string>
+
+    <string name="SMLogin_acc_et">请输入手机号</string>
+    <string name="SMLogin_auth_et">请输入验证码</string>>
+    <string name="SMLogin_auth_btn">获取验证码</string>>
+    <string name="SMLogin_bt">短信登录</string>>
 </resources>

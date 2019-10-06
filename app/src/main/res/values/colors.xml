@@ -81,7 +81,6 @@
     <color name="palegreen">#98fb98</color><!--苍绿色 -->
     <color name="darkviolet">#9400d3</color><!--暗紫罗兰色 -->
     <color name="mediumpurple">#9370db</color><!--中紫色 -->
-    <color name="skyblue">#87ceeb</color><!--天蓝色 -->
     <color name="gray">#808080</color><!--灰色 -->
     <color name="grey">#808080</color><!--灰色 -->
     <color name="olive">#808000</color><!--橄榄色 -->
@@ -104,8 +103,7 @@
     <color name="dimgray">#696969</color><!--暗灰色 -->
     <color name="dimgrey">#696969</color><!--暗灰色 -->
     <color name="mediumaquamarine">#66cdaa</color><!--中绿色 -->
-    <color name="cornflowerblue">#6495ed</color><!--菊兰色 -->
-    <color name="cadetblue">#5f9ea0</color><!--军兰色 -->
+
     <color name="darkolivegreen">#556b2f</color><!--暗橄榄绿 -->
     <color name="indigo">#4b0082</color><!--靛青色 -->
     <color name="mediumturquoise">#48d1cc</color><!--中绿宝石 -->
@@ -137,7 +135,6 @@
     <color name="saddlebrown">#8b4513</color><!--重褐色 -->
     <color name="darkmagenta">#8b008b</color><!--暗洋红 -->
     <color name="darkred">#8b0000</color><!--暗红色 -->
-    <color name="blueviolet">#8a2be2</color><!--紫罗兰蓝色 -->
     <color name="lavender">#e6e6fa</color><!--淡紫色 -->
     <color name="lightcyan">#e0ffff</color><!--亮青色 -->
     <color name="burlywood">#deb887</color><!--实木色 -->
@@ -147,6 +144,7 @@
 
 
     <!--APP主色调蓝色系-->
+    <color name="skyblue">#87ceeb</color><!--天蓝色 -->
     <color name="lightskyblue">#87cefa</color><!--亮天蓝色 -->
     <color name="dodgerblue">#1e90ff</color><!--闪兰色 -->
     <color name="lightseagreen">#20b2aa</color><!--亮海蓝色 -->
@@ -157,4 +155,8 @@
     <color name="blue">#0000ff</color><!--蓝色 -->
     <color name="mediumblue">#0000cd</color><!--中兰色 -->
     <color name="darkblue">#00008b</color><!--暗蓝色 -->
+    <color name="cornflowerblue">#6495ed</color><!--菊兰色 -->
+    <color name="cadetblue">#5f9ea0</color><!--军兰色 -->
+    <color name="blueviolet">#8a2be2</color><!--紫罗兰蓝色 -->
+
 </resources>

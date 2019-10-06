@@ -7,31 +7,29 @@
 
     <application
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_wft"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
+            android:roundIcon="@mipmap/ic_wft"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".login.ChooseActivity"
-                  android:theme="@style/AppTheme.Launcher">
+
+
+        <activity android:name=".login.StartActivity"
+                  android:theme="@style/AppTheme.Login">
 
         </activity>
 
-        <activity android:name=".login.StartActivity"
-                  android:theme="@style/AppTheme.Launcher">
+        <activity android:name=".login.ChooseActivity" android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".login.LoginActivity"
-                  android:theme="@style/AppTheme.Launcher"/>
-
-        <activity android:name=".login.RegisterActivity"
-                  android:theme="@style/AppTheme.Launcher"/>
-
+        <activity android:name=".login.LoginActivity" android:theme="@style/AppTheme.Login"/>
+        <activity android:name=".login.RegisterActivity" android:theme="@style/AppTheme.Login"/>
+        <activity android:name=".login.FogotPWActivity" android:theme="@style/AppTheme.Login"/>
+        <activity android:name=".login.SMLoginActivity" android:theme="@style/AppTheme.Login"/>
 
         <activity android:name=".main.MainActivity"></activity>>
         <activity android:name=".discover.StudentDetailsActivity"></activity>
@@ -39,6 +37,7 @@
         <activity android:name=".discover.StudentPostActivity"></activity>
         <activity android:name=".discover.TeacherPostActivity"></activity>
         <activity android:name=".discover.search.SearchActivity"></activity>
+
     </application>
     <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"去除自带标签栏-->
 
